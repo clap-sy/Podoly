@@ -27,7 +27,7 @@ public class PodolyService {
         Article article=podolyRepository.findById(id).orElseThrow();
         return article;
     }
-    public void delete(long id {
+    public void delete(long id) {
         podolyRepository.deleteById(id);
     }
     @Transactional

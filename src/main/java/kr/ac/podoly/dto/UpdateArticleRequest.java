@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Getter
 public class UpdateArticleRequest {
     private String title;
-    private String conetent;
+    private String content;
 }
