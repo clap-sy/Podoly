@@ -2,22 +2,111 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>블로그 글목록</title>
+    <title>포돌이 분실함</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8479eb343c222ca3962fa3db4ab463f1"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .card-header {
+            background-color: #8BC34A;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
-<body>
-<br>
-<a href="/new-article" class="btn btn-primary">글 작성하기</a>
-<div class="container">
-    <div class="row-6" th:each = "item : ${articles}">
-        <div class="card">
-            <div class="card-header" th:text = "${item.title}"></div>
-            <div class="card-body">
-                <p class="card-text" th:text="${item.content}"></p>
-                <a th:href="@{/articles/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <br>
+    <div class="jumbotron text-center">
+        <h1 class="display-4"><strong>포돌이 분실함</strong></h1>
+        <br>
+        <p class="lead">포돌이가 잃어버린 물건을 찾아드립니다 ♥</p>
+        <br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    분실물 확인
+                </div>
+                <div class="card-body">
+                    <p class="card-text">분실물 확인을 위한 내용을 입력하세요.</p>
+                    <a href="/new-article" class="btn btn-success">확인하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    분실물 신고
+                </div>
+                <div class="card-body">
+                    <p class="card-text">분실물 신고를 위한 내용을 입력하세요.</p>
+                    <a href="/report-lost-item" class="btn btn-success">신고하기</a>
+                </div>
             </div>
         </div>
     </div>
+    <br>
+    <p>여러분의 소중한 물건을 지도를 통해 찾아보세요 ~!</p>
+    <div id="map" style="width:100%;height:700px"></div>
+    <div id="clickLatlng"></div>
+    <div style="width:100%;height:700px;"></div>
+    <script>
+        var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+        var options = { //지도를 생성할 때 필요한 기본 옵션
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	        level: 16 //지도의 레벨(확대, 축소 정도)
+        };
+
+        var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    </script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        // 지도를 클릭한 위치에 표출할 마커입니다
+        var marker = new kakao.maps.Marker({
+            // 지도 중심좌표에 마커를 생성합니다
+            position: map.getCenter()
+        });
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+
+        // 지도에 클릭 이벤트를 등록합니다
+        // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+
+            // 클릭한 위도, 경도 정보를 가져옵니다
+            var latlng = mouseEvent.latLng;
+
+            // 마커 위치를 클릭한 위치로 옮깁니다
+            marker.setPosition(latlng);
+
+            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+            message += '경도는 ' + latlng.getLng() + ' 입니다';
+
+            var resultDiv = document.getElementById('clickLatlng');
+            resultDiv.innerHTML = message;
+        });
+    </script>
 </div>
 </body>
 </html>
