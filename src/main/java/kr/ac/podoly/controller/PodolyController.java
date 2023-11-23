@@ -17,7 +17,12 @@ public class PodolyController {
     @Autowired
     private PodolyService podolyService;
 
-    @PostMapping("/api/articles")
+    @GetMapping("/api/main")
+    public String mainPage(){
+        return "main";
+    }
+
+    @PostMapping("/api/main/articles")
     public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request){
 
         Article savedArticle=podolyService.save(request);
@@ -25,25 +30,25 @@ public class PodolyController {
                 .body(savedArticle);
     }
 
-    @GetMapping("/api/articles")
+    @GetMapping("/api/main/articles")
     public ResponseEntity<List<Article>> findAllArticle(){
         List<Article> articles=podolyService.findAll();
         return ResponseEntity.ok().body(articles);
     }
 
-    @GetMapping("/api/articles/{id}")
+    @GetMapping("/api/main/articles/{id}")
     public ResponseEntity<Article> findArticle(@PathVariable long id){
         Article article=podolyService.findOne(id);
         return ResponseEntity.ok().body(article);
     }
 
-    @DeleteMapping("/api/articles/{id}")
+    @DeleteMapping("/api/main/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable long id){
         podolyService.delete(id);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/api/articles/{id}")
+    @PutMapping("/api/main/articles/{id}")
     public ResponseEntity<Article> updateArticle(
             @PathVariable long id,
             @RequestBody UpdateArticleRequest updateArticle){

@@ -18,7 +18,7 @@
     var title=document.getElementById("title").value
     var content=document.getElementById("content").value
 
-    fetch(`/api/articles`,{
+    fetch(`/api/main/articles`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -30,7 +30,7 @@
         })
         .then(()=>{
             alert("등록 완료")
-            location.replace("/articles")
+            location.replace("/main/articles")
         })
     })
 </script>

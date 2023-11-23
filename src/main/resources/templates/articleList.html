@@ -13,7 +13,7 @@
             <div class="card-header" th:text = "${item.title}"></div>
             <div class="card-body">
                 <p class="card-text" th:text="${item.content}"></p>
-                <a th:href="@{/articles/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
+                <a th:href="@{/main/articles/{id}(id=${item.id})}" class="btn btn-primary">글 보러가기</a>
             </div>
         </div>
     </div>
