@@ -1,14 +1,12 @@
 package kr.ac.podoly.service;
 
-import jakarta.transaction.Transactional;
 import kr.ac.podoly.domain.Article;
 import kr.ac.podoly.dto.AddArticleRequest;
 import kr.ac.podoly.dto.UpdateArticleRequest;
 import kr.ac.podoly.repository.PodolyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.SpringNamingPolicy;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class PodolyService {
         Article article=podolyRepository.findById(id).orElseThrow();
         return article;
     }
-    public void delete(long id) {
+    public void delete(long id)  {
         podolyRepository.deleteById(id);
     }
     @Transactional

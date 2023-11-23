@@ -37,4 +37,13 @@ public class PodolyViewController {
     public String createArticle(){
         return "newArticle";
     }
+    @GetMapping("/articles/modify/{id}")
+    public ModelAndView modifyArticle(@PathVariable long id){
+        ModelAndView mav=new ModelAndView();
+        Article article=podolyService.findOne(id);
+
+        mav.addObject("article",article);
+        mav.setViewName("articleModify");
+        return mav;
+    }
 }
