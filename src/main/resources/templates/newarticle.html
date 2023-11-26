@@ -41,7 +41,7 @@
     var content3=document.getElementById("content3").value
     var content4=document.getElementById("content4").values
 
-    fetch(`/api/articles`,{
+    fetch(`/api/main/articles`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -55,7 +55,7 @@
         })
         .then(()=>{
             alert("등록 완료")
-            location.replace("/articles")
+            location.replace("/main/articles")
         })
     })
 </script>
