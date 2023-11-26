@@ -27,16 +27,18 @@ public class PodolyViewController {
 
     @GetMapping("/articles/{id}")
     public ModelAndView getArticle(@PathVariable long id){
-        ModelAndView mav=new ModelAndView();
-        Article article=podolyService.findOne(id);
-        mav.addObject("article",article);
+            ModelAndView mav=new ModelAndView();
+            Article article=podolyService.findOne(id);
+            mav.addObject("article",article);
         mav.setViewName("article");
         return mav;
     }
-    @GetMapping("/new-article")
+
+    @GetMapping("new-article")
     public String createArticle(){
         return "newArticle";
     }
+
     @GetMapping("/articles/modify/{id}")
     public ModelAndView modifyArticle(@PathVariable long id){
         ModelAndView mav=new ModelAndView();
