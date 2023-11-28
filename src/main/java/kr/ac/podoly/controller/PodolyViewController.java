@@ -20,8 +20,8 @@ public class PodolyViewController {
     public ModelAndView getMain(){
         ModelAndView mav=new ModelAndView();
         List<Article> main=podolyService.findAll();
-        mav.addObject("articlesMain", main);
-        mav.setViewName("articleMain");
+        mav.addObject("articleList", main);
+        mav.setViewName("articleList");
         return mav;
     }
     @GetMapping("/main/articles")
@@ -29,7 +29,7 @@ public class PodolyViewController {
         ModelAndView mav=new ModelAndView();
         List<Article> articles=podolyService.findAll();
         mav.addObject("articles", articles);
-        mav.setViewName("articleList");
+        mav.setViewName("articleMain");
         return mav;
     }
 
