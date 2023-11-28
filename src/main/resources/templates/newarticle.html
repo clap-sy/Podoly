@@ -4,11 +4,89 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 50px;
+            padding-width:50px
+        }
+
+        .card-header {
+            background-color: #8BC34A;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #CCCCCC;
+            font-weight: normal;
+            font-size:17px;
+            text-align:right;
+            padding:3px;
+        }
+        .container1{
+        padding-left:60px;
+        padding-top:20px;
+        }
+        .firstth{
+        padding-left:50px;
+        }
+
+    </style>
 </head>
 <body>
-<h1> 양식에 맞추어 작성해주세요. </h1>
-<h3>분실물명</h3>
+<h2> 양식에 맞추어 작성해주세요. </h2>
+<hr />
+<div class="container1">
+    <table border="1">
+        <tr><h6 style="font-weight:bold">관할관서</h6>
+            <th style="text-align: right; width: 120px; padding-right: 15px;">관할관서</th>
+            <th><textarea id="content01" class="form-control" placeholder="거주지나 분실지역 관할경찰서 입력" cols="30" rows="1"></textarea></th>
+        </tr>
+    </table>
+    <br />
+    <table>
+        <tr><h6 style="font-weight:bold">분실정보</h6>
+            <th class="firstth">분실지역</th>
+            <th><textarea id="content02" class="form-control" placeholder="시군구 ex) 서대문구, 상주시, 철원군" cols="30" rows="1"></textarea></th>
+        </tr>
+        <tr>
+            <th>분실장소</th>
+            <th><textarea id="content03" class="form-control" placeholder="분류 ex)버스, 지하철, 공항" cols="30" rows="1"></textarea></th>
+        </tr>
+        <tr>
+            <th>분실일자</th>
+            <th><textarea id="content04" class="form-control"  cols="30" rows="1"></textarea></th>
+        </tr>
+    </table>
+    <br />
+    <table>
+        <tr><h6 style="font-weight:bold">물품정보</h6>
+            <th class="firstth">분류</th>
+            <th><textarea id="content05" class="form-control" cols="30" rows="1"></textarea></th>
+            <th class="firstth">색상</th>
+            <th ><textarea id="content06" class="form-control" cols="20" rows="1"></textarea><h6>색 계열</h6></th>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th class="firstth" style="padding-left:18px; border-top: none;">내용 및 특이사항</th>
+            <th><textarea id="content07" class="form-control" cols="60" rows="1"></textarea></th>
+        </tr>
+    </table>
+</div>
+
+
+<br /><br /><br /><br /><br />
 <div class="container">
+    <h4>분실물명</h4>
     <textarea id="content1" class="form-control" placeholder="분실물명을 적어주세요." cols="30" rows="1"></textarea>
 
 </div>
@@ -42,7 +120,7 @@
     var content1=document.getElementById("content1").value
     var content2=document.getElementById("content2").value
     var content3=document.getElementById("content3").value
-    var content4=document.getElementById("content4").values
+    var content4=document.getElementById("content4").value
 
     fetch(`/api/main/articles`,{
         method:"POST",
