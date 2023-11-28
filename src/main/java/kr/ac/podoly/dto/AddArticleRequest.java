@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class AddArticleRequest {
     private String title;
     private String content;
+
     public Article toEntity() {
         Article article=new Article(title,content);
         return article;

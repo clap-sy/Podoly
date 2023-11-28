@@ -55,4 +55,8 @@ public class PodolyViewController {
         mav.setViewName("articleModify");
         return mav;
     }
+    @GetMapping("/check")
+    public String check() {
+        return "check";
+    }
 }

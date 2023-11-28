@@ -19,7 +19,7 @@
         var title=document.getElementById("title").value
         var content=document.getElementById("content").value
         var id=document.getElementById("id").value
-        fetch("/api/articles/"+id,{
+        fetch("/api/main/articles/"+id,{
             method:"PUT",
             headers:{
                 "Content-type":"application/json"

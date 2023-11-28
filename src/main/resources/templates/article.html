@@ -26,7 +26,7 @@
             if(!confirm("정말 삭제하시겠습니까?") ){
                 return
             }
-            fetch("/api/articles/"+id,{
+            fetch("/api/main/articles/"+id,{
                 method:"DELETE",
             })
             .then(()=>{
