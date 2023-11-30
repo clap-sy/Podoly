@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -30,6 +31,12 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Column(name = "location", nullable = false)
+    private String location;
+
+    @Column(name = "date", nullable = false)
+    private Date date;
+
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -39,14 +46,18 @@ public class Article {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Article(String title, String content) {
+    public Article(String title, String content, String location, Date date) {
         this.title = title;
         this.content = content;
+        this.location =location;
+        this.date = date;
     }
 
-    public void update(String title, String content) {
+    public void update(String title, String content, String location, Date date) {
         this.title = title;
         this.content = content;
+        this.location =location;
+        this.date = date;
     }
 
     public String getFormattedCreateDate() {

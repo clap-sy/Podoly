@@ -59,4 +59,9 @@ public class PodolyViewController {
     public String check() {
         return "check";
     }
+
+    @GetMapping("/found")
+    public String found() {
+        return "found";
+    }
 }
