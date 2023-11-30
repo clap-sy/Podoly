@@ -86,7 +86,8 @@
     submitBtn.addEventListener("click", event => {
         console.log("등록");
         var itemName = document.getElementById("item-name").value;
-        var location = document.getElementById("location").value;
+        var lat = marker.getPosition().getLat(); // 위도 정보
+        var lng = marker.getPosition().getLng(); // 경도 정보
         var description = document.getElementById("description").value;
         var date = document.getElementById("date").value;
 
@@ -97,7 +98,8 @@
             },
             body: JSON.stringify({
                 itemName: itemName,
-                location: location,
+                lat: lat,
+                lng: lng,
                 description: description,
                 date: date
             })
@@ -108,5 +110,6 @@
         })
     })
 </script>
+
 </body>
 </html>

@@ -18,16 +18,6 @@ public class UpdateArticleRequest {
     private double lng;
     private LocalDate date;
 
-    public Article toEntity() {
-        return Article.builder()
-                .itemName(itemName)
-                .description(description)
-                .lat(lat)
-                .lng(lng)
-                .date(date)
-                .build();
-    }
-
     public String getItemName() {
         return itemName;
     }

@@ -19,12 +19,7 @@ public class AddArticleRequest {
     private LocalDate date;
 
     public Article toEntity() {
-        return Article.builder()
-                .itemName(itemName)
-                .description(description)
-                .lat(lat)
-                .lng(lng)
-                .date(date)
-                .build();
+        Article article=new Article(itemName,description,lat,lng,date);
+        return article;
     }
 }
