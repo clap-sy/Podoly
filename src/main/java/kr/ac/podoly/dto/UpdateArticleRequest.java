@@ -11,12 +11,27 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+
+
 public class UpdateArticleRequest {
+    private String title;
     private String itemName;
+    private String content;
     private String description;
     private double lat;
     private double lng;
     private LocalDate date;
+
+    public void update(Article article) {
+        article.update(this.title, this.itemName, this.content, this.description, this.lat, this.lng, this.date);
+    }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getItemName() {
         return itemName;
@@ -24,6 +39,14 @@ public class UpdateArticleRequest {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getDescription() {

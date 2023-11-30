@@ -43,13 +43,14 @@ public class PodolyController {
         return ResponseEntity.ok().body(article);
     }
 
-    @DeleteMapping("/api/main/articles/{id}")
+
+    @DeleteMapping("/api/found/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable long id){
         podolyService.delete(id);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/api/main/articles/{id}")
+    @PutMapping("/api/found/{id}")
     public ResponseEntity<Article> updateArticle(
             @PathVariable long id,
             @RequestBody UpdateArticleRequest updateArticle){

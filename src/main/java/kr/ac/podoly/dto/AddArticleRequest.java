@@ -12,14 +12,16 @@ import java.time.LocalDate;
 @Getter
 
 public class AddArticleRequest {
+    private String title;
     private String itemName;
+    private String content;
     private String description;
     private double lat;
     private double lng;
     private LocalDate date;
 
     public Article toEntity() {
-        Article article=new Article(itemName,description,lat,lng,date);
+        Article article=new Article(title, itemName, content, description, lat,lng, date);
         return article;
     }
 }

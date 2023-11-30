@@ -85,23 +85,27 @@
     var submitBtn = document.getElementById("submit");
     submitBtn.addEventListener("click", event => {
         console.log("등록");
+        var title = "분실물입니다"; // title 정보 추가
         var itemName = document.getElementById("item-name").value;
         var lat = marker.getPosition().getLat(); // 위도 정보
         var lng = marker.getPosition().getLng(); // 경도 정보
         var description = document.getElementById("description").value;
         var date = document.getElementById("date").value;
+        var content = "분실물 신고입니다"; // content 정보 추가
 
-        fetch(`/api/main/articles`, {
+        fetch(`/api/found/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                title: title,
                 itemName: itemName,
                 lat: lat,
                 lng: lng,
                 description: description,
-                date: date
+                date: date,
+                content: content
             })
         })
         .then(() => {
@@ -110,6 +114,5 @@
         })
     })
 </script>
-
 </body>
 </html>

@@ -28,16 +28,16 @@ public class PodolyViewController {
     public ModelAndView getArticles(){
         ModelAndView mav=new ModelAndView();
         List<Article> articles=podolyService.findAll();
-        mav.addObject("articles", articles);
+//        mav.addObject("articles", articles);
         mav.setViewName("articleMain");
         return mav;
     }
 
-    @GetMapping("/main/articles/{id}")
+    @GetMapping("/found/{id}")
     public ModelAndView getArticle(@PathVariable long id){
-            ModelAndView mav=new ModelAndView();
-            Article article=podolyService.findOne(id);
-            mav.addObject("article",article);
+        ModelAndView mav=new ModelAndView();
+        Article article=podolyService.findOne(id);
+        mav.addObject("article",article);
         mav.setViewName("article");
         return mav;
     }
@@ -61,7 +61,12 @@ public class PodolyViewController {
     }
 
     @GetMapping("/found")
-    public String found() {
-        return "found";
+    public ModelAndView showAllArticles() {
+        ModelAndView mav = new ModelAndView();
+        List<Article> articles = podolyService.findAll();
+        mav.addObject("articles", articles);
+        mav.setViewName("found");
+        return mav;
     }
+
 }
