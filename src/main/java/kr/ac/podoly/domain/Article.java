@@ -5,12 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -25,46 +22,43 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
-    @Column(name = "title", nullable = false)
-    private String title;
+    @Column(name = "item_name", nullable = false)
+    private String itemName;  // 분실물명
 
-    @Column(name = "content", nullable = false)
-    private String content;
+    @Column(name = "lat")
+    private double lat;  // 위도
 
-    @Column(name = "location", nullable = false)
-    private String location;
+    @Column(name = "lng")
+    private double lng;  // 경도
 
-    @Column(name = "date", nullable = false)
-    private Date date;
+    @Column(name = "description")
+    private String description;  // 상세정보
 
-    @CreatedDate
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Column(name = "date")
+    private LocalDate date;  // 연도-월-일
 
     @Builder
-    public Article(String title, String content, String location, Date date) {
-        this.title = title;
-        this.content = content;
-        this.location =location;
+    public Article(String itemName, String description, double lat, double lng, LocalDate date) {
+        this.itemName = itemName;
+        this.description = description;
+        this.lat = lat;
+        this.lng = lng;
         this.date = date;
     }
 
-    public void update(String title, String content, String location, Date date) {
-        this.title = title;
-        this.content = content;
-        this.location =location;
+    public void update(String itemName, String description, double lat, double lng, LocalDate date) {
+        this.itemName = itemName;
+        this.description = description;
+        this.lat = lat;
+        this.lng = lng;
         this.date = date;
     }
 
-    public String getFormattedCreateDate() {
-        if (createdAt == null) {
+    public String getFormattedDate() {
+        if (date == null) {
             return "";
         }
-        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return createdAt.format(pattern);
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return date.format(pattern);
     }
 }

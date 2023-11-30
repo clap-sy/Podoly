@@ -5,19 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+
 public class AddArticleRequest {
-    private String title;
-    private String content;
-    private String location;
-    private Date date;
+    private String itemName;
+    private String description;
+    private double lat;
+    private double lng;
+    private LocalDate date;
 
     public Article toEntity() {
-        Article article=new Article(title,content,location,date);
+        Article article=new Article(itemName,description,lat,lng,date);
         return article;
     }
 }
