@@ -23,9 +23,8 @@ public class PodolyController {
         return "main";
     }
 
-    @PostMapping("/api/main/articles")
+    @PostMapping("/api/found")
     public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request){
-
         Article savedArticle=podolyService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedArticle);

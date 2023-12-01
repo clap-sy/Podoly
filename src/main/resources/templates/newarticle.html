@@ -20,7 +20,7 @@
             color: #4CAF50;
         }
     </style>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=실제 발급받은 API 키"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8479eb343c222ca3962fa3db4ab463f1"></script>
 </head>
 <body class="bg-light">
 <br>
@@ -93,7 +93,7 @@
         var date = document.getElementById("date").value;
         var content = "분실물 신고입니다"; // content 정보 추가
 
-        fetch(`/api/found/`, {
+        fetch(`/api/found`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -114,5 +114,6 @@
         })
     })
 </script>
+
 </body>
 </html>

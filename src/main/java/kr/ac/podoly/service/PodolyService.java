@@ -28,6 +28,7 @@ public class PodolyService {
     public void delete(long id)  {
         podolyRepository.deleteById(id);
     }
+
     @Transactional
     public Article update(long id, UpdateArticleRequest request) {
         Article article=podolyRepository.findById(id).orElseThrow();

@@ -44,9 +44,9 @@
 <header>
 
 </header>
-<h2 >분실물 확인</h2>
+<h2 >분실&습득물 확인</h2>
 <br/>
-<h5>분실물을 확인하세요.</h5>
+<h5>여러분의 소중한 물건이 있는지 확인해보세요 !</h5>
 
 <hr/>
 
@@ -69,34 +69,5 @@
     </div>
 </div>
 
-</body>
-
-<script>
-    var submitBtn = document.getElementById("submit");
-    submitBtn.addEventListener("click", event => {
-        console.log("등록");
-        var title = document.getElementById("title").value;
-        var location = document.getElementById("location").value;
-        var content = document.getElementById("content").value;
-        var date = document.getElementById("date").value;
-
-        fetch(`/api/found/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: title,
-                location: location,
-                content: content,
-                date: date
-            })
-        })
-        .then(() => {
-            alert("신고 완료! 곧 주인을 찾을 수 있을거예요0v0")
-            location.replace("/main/articles")
-        })
-    })
-</script>
 </body>
 </html>
