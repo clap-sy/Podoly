@@ -14,6 +14,14 @@
             background-color: #8BC34A;
             color: white;
         }
+        .card {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .row-6 {
+            gap: 20px;
+        }
         .btn-success {
             background-color: #4CAF50;
             color: white;
@@ -44,7 +52,7 @@
 <header>
 
 </header>
-<h2 >분실&습득물 확인</h2>
+<h2 ><strong>분실 & 습득물 확인</strong></h2>
 <br/>
 <h5>여러분의 소중한 물건이 있는지 확인해보세요 !</h5>
 
@@ -63,7 +71,7 @@
             <div class="card-header" th:text = "${item.title}"></div>
             <div class="card-body">
                 <p class="card-text" th:text="${item.content}"></p>
-                <a th:href="@{/found/{id}(id=${item.id})}" class="btn btn-success">글 보러가기</a>
+                <a th:href="@{/found/{id}(id=${item.id})}" class="btn btn-success">자세히 보기</a>
             </div>
         </div>
     </div>

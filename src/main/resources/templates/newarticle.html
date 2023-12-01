@@ -85,13 +85,14 @@
     var submitBtn = document.getElementById("submit");
     submitBtn.addEventListener("click", event => {
         console.log("등록");
-        var title = "분실물입니다"; // title 정보 추가
+        var itemName = document.getElementById("item-name").value; // 먼저 itemName 선언
+        var title = itemName; // 그 다음 title에 itemName 할당
         var itemName = document.getElementById("item-name").value;
         var lat = marker.getPosition().getLat(); // 위도 정보
         var lng = marker.getPosition().getLng(); // 경도 정보
         var description = document.getElementById("description").value;
         var date = document.getElementById("date").value;
-        var content = "분실물 신고입니다"; // content 정보 추가
+        var content = "분실물 신고 들어왔어요 !"; // content 정보 추가
 
         fetch(`/api/found`, {
             method: "POST",
