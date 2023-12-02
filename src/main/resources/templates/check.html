@@ -152,7 +152,7 @@
     var date = document.getElementById("date").value;
     var content = "습득물 신고 들어왔어요 !";
 
-    fetch(`/api/found`, {
+    fetch(`/api/get`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -169,7 +169,7 @@
     })
     .then(() => {
         alert("신고 완료! 곧 찾을 수 있을거예요0v0")
-        location.replace("/found")
+        location.replace("/get")
     })
 })
 

@@ -46,6 +46,7 @@ public class Article {
     @Column(name = "date")
     private LocalDate date;  // 연도-월-일
 
+
     @Builder
     public Article(String title, String itemName, String content, String description, double lat, double lng, LocalDate date) {
         this.title = title;

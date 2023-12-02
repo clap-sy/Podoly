@@ -29,7 +29,11 @@ public class PodolyController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedArticle);
     }
-
+    @PostMapping("/api/get")
+    public ResponseEntity<Article> reportFoundItem(@RequestBody AddArticleRequest request) {
+        Article savedArticle = podolyService.save(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
+    }
     @GetMapping("/api/main/articles")
     public ResponseEntity<List<Article>> findAllArticle(){
         List<Article> articles=podolyService.findAll();
@@ -69,6 +73,7 @@ public class PodolyController {
         Article article=podolyService.update(id,updateGetArticle);
         return ResponseEntity.ok().body(article);
     }
+
 
 
 }
