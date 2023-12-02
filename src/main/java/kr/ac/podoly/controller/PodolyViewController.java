@@ -34,6 +34,14 @@ public class PodolyViewController {
     }
 
     @GetMapping("/found/{id}")
+    public ModelAndView foundArticle(@PathVariable long id){
+        ModelAndView mav=new ModelAndView();
+        Article article=podolyService.findOne(id);
+        mav.addObject("article",article);
+        mav.setViewName("article");
+        return mav;
+    }
+    @GetMapping("/get/{id}")
     public ModelAndView getArticle(@PathVariable long id){
         ModelAndView mav=new ModelAndView();
         Article article=podolyService.findOne(id);
@@ -66,6 +74,14 @@ public class PodolyViewController {
         List<Article> articles = podolyService.findAll();
         mav.addObject("articles", articles);
         mav.setViewName("found");
+        return mav;
+    }
+    @GetMapping("/get")
+    public ModelAndView showGetArticles() {
+        ModelAndView mav = new ModelAndView();
+        List<Article> articles = podolyService.findAll();
+        mav.addObject("articles", articles);
+        mav.setViewName("get");
         return mav;
     }
 
