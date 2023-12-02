@@ -30,8 +30,67 @@
         .text-center {
             margin-top: 20px;
         }
+        body {
+          font-family: 'Noto Sans KR', sans-serif;
+          margin: 0;
+          padding: 0;
+          font-family: 'Arial', sans-serif;
+        }
+
+        .header1{
+            padding-left:100px;
+            padding-right:100px;
+            }
+
+        .header2 {
+          background-color: #659f7c;
+          padding:5px;
+          padding-left: 20px;
+        }
+
+        h3{
+            margin-right: 600px;
+            color: #004d40;
+            }
+
+        nav {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          align-items: flex-end; /* 아래선에 맞춤 */
+        }
+
+        nav li {
+          margin-right: 20px;
+        }
+
+        nav a {
+          color: #006400;
+          text-decoration: none;
+          font-size: 18px;
+        }
+
+        img {
+      width: 80px;
+      height: auto;
+            }
     </style>
 </head>
+<div class="header-container1">
+    <div class="header1">
+        <nav>
+            <img src="/podoly.png" alt="로고">
+            <h3>포돌이 유실물 포털</h3>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">분실물 확인</a></li>
+            <li><a href="#">분실물 신고</a></li>
+            <li><a href="#">습득물 신고</a></li>
+        </nav>
+    </div>
+</div>
+
+<div class="header2"></div>
+<br/><br/>
 <body>
 <div class="container">
     <input id="title" type="text" th:value="${article.title}" class="form-control">
