@@ -14,8 +14,8 @@
         }
 
         .header1{
-            padding-left:150px;
-            padding-right:150px;
+            padding-left:130px;
+            padding-right:30px;
         }
         .header2 {
             background-color: #659f7c;
@@ -23,7 +23,7 @@
             padding-left: 20px;
         }
         h3{
-            margin-right: 500px;
+            margin-right: 350px;
             color: #004d40;
         }
         nav {
@@ -82,6 +82,7 @@
         .container2 {
             display: flex;
             justify-content: flex-end;
+            padding-right:30px;
         }
 
         .btn {
@@ -131,9 +132,9 @@
 <br/><br/>
 
 <div class="container">
-    <div class="row-6" th:each = "item : ${articles}">
+    <div class="row-6" th:each="item : ${articles}">
         <div class="card">
-            <div class="card-header" th:text = "${item.title}"></div>
+            <div class="card-header" th:text="${item.title}"></div>
             <div class="card-body">
                 <p class="card-text" th:text="${item.content}"></p>
                 <a th:href="@{/get/{id}(id=${item.id})}" class="btn btn-success">자세히 보기</a>
