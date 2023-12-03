@@ -19,9 +19,13 @@ public class AddArticleRequest {
     private double lat;
     private double lng;
     private LocalDate date;
+    private Article.ArticleType articleType;
 
+    public void setArticleType(Article.ArticleType articleType) {
+        this.articleType = articleType;
+    }
     public Article toEntity() {
-        Article article=new Article(title, itemName, content, description, lat,lng, date);
+        Article article=new Article(title, itemName, content, description, lat,lng, date, articleType);
         return article;
     }
 }

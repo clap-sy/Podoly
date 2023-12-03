@@ -32,7 +32,6 @@ public class PodolyViewController {
         mav.setViewName("articleMain");
         return mav;
     }
-
     @GetMapping("/found/{id}")
     public ModelAndView foundArticle(@PathVariable long id){
         ModelAndView mav=new ModelAndView();
@@ -41,15 +40,6 @@ public class PodolyViewController {
         mav.setViewName("article");
         return mav;
     }
-    @GetMapping("/get/{id}")
-    public ModelAndView getArticle(@PathVariable long id){
-        ModelAndView mav=new ModelAndView();
-        Article article=podolyService.findOne(id);
-        mav.addObject("article",article);
-        mav.setViewName("article");
-        return mav;
-    }
-
     @GetMapping("new-article")
     public String createArticle(){
         return "newArticle";
@@ -71,17 +61,18 @@ public class PodolyViewController {
     @GetMapping("/found")
     public ModelAndView showAllArticles() {
         ModelAndView mav = new ModelAndView();
-        List<Article> articles = podolyService.findAll();
+        List<Article> articles = podolyService.findAllFound();
         mav.addObject("articles", articles);
         mav.setViewName("found");
         return mav;
     }
+
     @GetMapping("/get")
-    public ModelAndView showGetArticles() {
+    public ModelAndView showAllFoundItems() {
         ModelAndView mav = new ModelAndView();
-        List<Article> articles = podolyService.findAll();
+        List<Article> articles = podolyService.findAllGet();
         mav.addObject("articles", articles);
-        mav.setViewName("get");
+        mav.setViewName("get");  // 습득물 목록 페이지
         return mav;
     }
 

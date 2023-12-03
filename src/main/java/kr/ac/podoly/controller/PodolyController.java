@@ -25,27 +25,38 @@ public class PodolyController {
 
     @PostMapping("/api/found")
     public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request){
+        request.setArticleType(Article.ArticleType.FOUND);
         Article savedArticle=podolyService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedArticle);
     }
     @PostMapping("/api/get")
-    public ResponseEntity<Article> reportFoundItem(@RequestBody AddArticleRequest request) {
+    public ResponseEntity<Article> addFoundItem(@RequestBody AddArticleRequest request){
+        request.setArticleType(Article.ArticleType.GET);
         Article savedArticle = podolyService.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(savedArticle);
     }
-    @GetMapping("/api/main/articles")
-    public ResponseEntity<List<Article>> findAllArticle(){
-        List<Article> articles=podolyService.findAll();
+//    @GetMapping("/api/main/articles")
+//    public ResponseEntity<List<Article>> findAllArticle(){
+//        List<Article> articles=podolyService.findAll();
+//        return ResponseEntity.ok().body(articles);
+//    }
+//    @GetMapping("/api/main/articles/{id}")
+//    public ResponseEntity<Article> findArticle(@PathVariable long id){
+//        Article article=podolyService.findOne(id);
+//        return ResponseEntity.ok().body(article);
+//    }
+    @GetMapping("/api/found")
+    public ResponseEntity<List<Article>> findAllLostItems(){
+        List<Article> articles = podolyService.findAllFound();
         return ResponseEntity.ok().body(articles);
     }
-
-    @GetMapping("/api/main/articles/{id}")
-    public ResponseEntity<Article> findArticle(@PathVariable long id){
-        Article article=podolyService.findOne(id);
-        return ResponseEntity.ok().body(article);
+    @GetMapping("/api/get")
+    public ResponseEntity<List<Article>> findAllFoundItem(){
+        List<Article> articles = podolyService.findAllGet();
+        return ResponseEntity.ok().body(articles);
     }
-
 
     @DeleteMapping("/api/found/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable long id){
@@ -60,20 +71,4 @@ public class PodolyController {
         Article article=podolyService.update(id,updateArticle);
         return ResponseEntity.ok().body(article);
     }
-    @DeleteMapping("/api/get/{id}")
-    public ResponseEntity<Void> deleteGetArticle(@PathVariable long id){
-        podolyService.delete(id);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/api/get/{id}")
-    public ResponseEntity<Article> updateGetArticle(
-            @PathVariable long id,
-            @RequestBody UpdateArticleRequest updateGetArticle){
-        Article article=podolyService.update(id,updateGetArticle);
-        return ResponseEntity.ok().body(article);
-    }
-
-
-
 }

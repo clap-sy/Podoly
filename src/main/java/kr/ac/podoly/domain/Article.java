@@ -18,8 +18,8 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Article {
 
+public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -46,9 +46,14 @@ public class Article {
     @Column(name = "date")
     private LocalDate date;  // 연도-월-일
 
+    @Enumerated(EnumType.STRING)
+    private ArticleType articleType;
 
+    public enum ArticleType {
+        GET, FOUND
+    }
     @Builder
-    public Article(String title, String itemName, String content, String description, double lat, double lng, LocalDate date) {
+    public Article(String title, String itemName, String content, String description, double lat, double lng, LocalDate date, ArticleType articleType) {
         this.title = title;
         this.itemName = itemName;
         this.content=content;
@@ -56,6 +61,7 @@ public class Article {
         this.lat = lat;
         this.lng = lng;
         this.date = date;
+        this.articleType = articleType;
     }
 
     public void update(String title, String itemName, String content, String description, double lat, double lng, LocalDate date) {
@@ -75,4 +81,6 @@ public class Article {
         DateTimeFormatter pattern=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return createdAt.format(pattern);
     }
+
 }
+

@@ -12,8 +12,13 @@ import java.util.List;
 
 @Service
 public class PodolyService {
-    @Autowired
-    private PodolyRepository podolyRepository;
+    private final PodolyRepository podolyRepository;
+
+    public PodolyService(PodolyRepository podolyRepository) {
+        this.podolyRepository = podolyRepository;
+    }
+//    @Autowired
+//    private PodolyRepository podolyRepository;
     public Article save(AddArticleRequest request) {
         return podolyRepository.save(request.toEntity());
     }
@@ -31,8 +36,15 @@ public class PodolyService {
 
     @Transactional
     public Article update(long id, UpdateArticleRequest request) {
-        Article article=podolyRepository.findById(id).orElseThrow();
-        article.update(request.getTitle(), request.getItemName(),request.getContent(), request.getDescription(), request.getLat(), request.getLng(), request.getDate());
+        Article article = podolyRepository.findById(id).orElseThrow();
+        article.update(request.getTitle(), request.getItemName(), request.getContent(), request.getDescription(), request.getLat(), request.getLng(), request.getDate());
         return article;
+    }
+    public List<Article> findAllFound() {
+        return podolyRepository.findByArticleType(Article.ArticleType.FOUND);
+    }
+
+    public List<Article> findAllGet() {
+        return podolyRepository.findByArticleType(Article.ArticleType.GET);
     }
 }
