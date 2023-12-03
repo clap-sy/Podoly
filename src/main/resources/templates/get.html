@@ -116,13 +116,13 @@
 <div class="header-container1">
     <div class="header1">
         <nav>
-            <img src="/logobx.png" alt="로고">
-            <h3>포돌이 유실물 포털</h3>
-            <li><a href="/main/articles">Home</a></li>
-            <li><a href="/found">분실물 확인</a></li>
-            <li><a href="/get">습득물 확인</a></li>
-            <li><a href="/new-article">분실물 신고</a></li>
-            <li><a href="/check">습득물 신고</a></li>
+            <img src="/podoly.png">
+            <h3><strong>포돌이 유실물 포털</strong></h3>
+            <li><strong><a href="/main/articles">Home</a></strong></li>
+            <li><strong><a href="/found">분실물 확인</a></strong></li>
+            <li><strong><a href="/get">습득물 확인</a></strong></li>
+            <li><strong><a href="/new-article">분실물 신고</a></strong></li>
+            <li><strong><a href="/check">습득물 신고</a></strong></li>
         </nav>
     </div>
 </div>
@@ -142,12 +142,12 @@
 <br/><br/>
 
 <div class="container">
-    <div class="row-6" th:each="item : ${articles}">
+    <div class="row-6" th:each = "item : ${articles}">
         <div class="card">
-            <div class="card-header" th:text="${item.title}"></div>
+            <div class="card-header" th:text = "${item.title}"></div>
             <div class="card-body">
                 <p class="card-text" th:text="${item.content}"></p>
-                <a th:href="@{/get/{id}(id=${item.id})}" class="btn btn-success">자세히 보기</a>
+                <a th:href="@{/found/{id}(id=${item.id})}" class="btn btn-success">자세히 보기</a>
             </div>
         </div>
     </div>
