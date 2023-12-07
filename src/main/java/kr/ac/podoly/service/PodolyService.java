@@ -37,7 +37,7 @@ public class PodolyService {
     @Transactional
     public Article update(long id, UpdateArticleRequest request) {
         Article article = podolyRepository.findById(id).orElseThrow();
-        article.update(request.getTitle(), request.getItemName(), request.getContent(), request.getDescription(), request.getLat(), request.getLng(), request.getDate());
+        article.update(request.getTitle(), request.getItemName(), request.getContent(), request.getDescription(), request.getLat(), request.getLng(), request.getAddress(), request.getDate());
         return article;
     }
     public List<Article> findAllFound() {

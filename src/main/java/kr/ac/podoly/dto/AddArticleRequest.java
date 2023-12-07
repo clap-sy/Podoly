@@ -18,6 +18,7 @@ public class AddArticleRequest {
     private String description;
     private double lat;
     private double lng;
+    private String address;
     private LocalDate date;
     private Article.ArticleType articleType;
 
@@ -25,7 +26,7 @@ public class AddArticleRequest {
         this.articleType = articleType;
     }
     public Article toEntity() {
-        Article article=new Article(title, itemName, content, description, lat,lng, date, articleType);
+        Article article=new Article(title, itemName, content, description, lat,lng,address, date, articleType);
         return article;
     }
 }

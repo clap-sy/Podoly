@@ -20,10 +20,13 @@ public class UpdateArticleRequest {
     private String description;
     private double lat;
     private double lng;
+    private String address;
     private LocalDate date;
 
+
+
     public void update(Article article) {
-        article.update(this.title, this.itemName, this.content, this.description, this.lat, this.lng, this.date);
+        article.update(this.title, this.itemName, this.content, this.description, this.lat, this.lng,this.address, this.date);
     }
     public String getTitle() {
         return title;
@@ -71,6 +74,14 @@ public class UpdateArticleRequest {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public LocalDate getDate() {

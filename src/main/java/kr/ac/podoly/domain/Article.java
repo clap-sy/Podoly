@@ -40,6 +40,9 @@ public class Article {
     @Column(name = "lng")
     private double lng;  // 경도
 
+    @Column(name = "address")
+    private String address;//주소
+
     @Column(name = "description")
     private String description;  // 상세정보
 
@@ -53,24 +56,26 @@ public class Article {
         GET, FOUND
     }
     @Builder
-    public Article(String title, String itemName, String content, String description, double lat, double lng, LocalDate date, ArticleType articleType) {
+    public Article(String title, String itemName, String content, String description, double lat, double lng, String address, LocalDate date, ArticleType articleType) {
         this.title = title;
         this.itemName = itemName;
         this.content=content;
         this.description = description;
         this.lat = lat;
         this.lng = lng;
+        this.address = address;
         this.date = date;
         this.articleType = articleType;
     }
 
-    public void update(String title, String itemName, String content, String description, double lat, double lng, LocalDate date) {
+    public void update(String title, String itemName, String content, String description, double lat, double lng, String address, LocalDate date) {
         this.title = title;
         this.itemName = itemName;
         this.content = content;
         this.description = description;
         this.lat = lat;
         this.lng = lng;
+        this.address = address;
         this.date = date;
     }
 
