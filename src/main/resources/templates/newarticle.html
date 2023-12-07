@@ -129,8 +129,9 @@
         var itemName = document.getElementById("item-name").value; // 먼저 itemName 선언
         var title = itemName; // 그 다음 title에 itemName 할당
         var itemName = document.getElementById("item-name").value;
-        var lat = marker.getPosition().getLat(); // 위도 정보
-        var lng = marker.getPosition().getLng(); // 경도 정보
+<!--        var lat = marker.getPosition().getLat(); // 위도 정보-->
+<!--        var lng = marker.getPosition().getLng(); // 경도 정보-->
+        var address = document.getElementById("address").value;
         var description = document.getElementById("description").value;
         var date = document.getElementById("date").value;
         var content = "분실물 신고 들어왔어요 !"; // content 정보 추가
@@ -143,8 +144,9 @@
             body: JSON.stringify({
                 title: title,
                 itemName: itemName,
-                lat: lat,
-                lng: lng,
+<!--                lat: lat,-->
+<!--                lng: lng,-->
+                address: address,
                 description: description,
                 date: date,
                 content: content,

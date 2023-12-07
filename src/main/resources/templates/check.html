@@ -122,8 +122,9 @@
     var itemName = document.getElementById("item-name").value; // 먼저 itemName 선언
     var title = itemName; // 그 다음 title에 itemName 할당
     var itemName = document.getElementById("item-name").value;
-    var lat = marker.getPosition().getLat();
-    var lng = marker.getPosition().getLng();
+<!--    var lat = marker.getPosition().getLat();-->
+<!--    var lng = marker.getPosition().getLng();-->
+    var address = document.getElementById("address").value;
     var description = document.getElementById("description").value;
     var date = document.getElementById("date").value;
     var content = "습득물 신고 들어왔어요 !";
@@ -136,8 +137,9 @@
         body: JSON.stringify({
             title: title,
             itemName: itemName,
-            lat: lat,
-            lng: lng,
+<!--            lat: lat,-->
+<!--            lng: lng,-->
+            address: address,
             description: description,
             date: date,
             content: content,
