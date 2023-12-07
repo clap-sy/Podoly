@@ -136,6 +136,16 @@
         var date = document.getElementById("date").value;
         var content = "분실물 신고 들어왔어요 !"; // content 정보 추가
 
+        if(!title){
+        return window.alert("제목을 입력해주세요")
+        }
+        if(!description){
+            return window.alert("상세내용을 입력해주세요")
+        }
+        if(!date){
+            return window.alert("날짜를 지정해주세요")
+        }
+
         fetch(`/api/found`, {
             method: "POST",
             headers: {
