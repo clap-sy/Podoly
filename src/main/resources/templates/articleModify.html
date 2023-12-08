@@ -90,8 +90,7 @@
 </div>
 
 <div class="header2"></div>
-<br/><br/>
-<body>
+<br/><br/><body>
 <div class="container">
     <input id="title" type="text" th:value="${article.title}" class="form-control">
     <input id="itemName" type="text" th:value="${article.itemName}" class="form-control">
@@ -107,25 +106,34 @@
     </div>
 </div>
 <script>
-    var lat = document.getElementById("lat").value;
-    var lng = document.getElementById("lng").value;
+    function getCoordinates() {
+        var lat = document.getElementById("lat").value;
+        var lng = document.getElementById("lng").value;
 
-    fetch("https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x="+lng+"&y="+lat,{
-        headers:{
-            Authorization:"KakaoAK c3bd320c26840fdf683a85f5ea5bf3fc"
+        if (lat.trim() !== "" && lng.trim() !== "") {
+            fetch("https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=" + lng + "&y=" + lat, {
+                headers: {
+                    Authorization: "KakaoAK c3bd320c26840fdf683a85f5ea5bf3fc"
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.documents && result.documents.length > 0) {
+                    var address = result.documents[0].address_name;
+                    document.getElementById('address').value = address;
+                } else {
+                    console.error('Invalid response', result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
-    })
-    .then(response=>response.json())
-    .then(result=>{
-        if (result.documents && result.documents.length > 0) {
-            var address = result.documents[0].address_name;
-            document.getElementById('address').value = address;
-        } else {
-            console.error('Invalid response', result);
-        }
-    });
+    }
 
-    function modify(){
+    function modify() {
+        getCoordinates(); // 수정 버튼 클릭 시 좌표 값을 가져옴
+
         var title = document.getElementById("title").value;
         var itemName = document.getElementById("itemName").value;
         var content = document.getElementById("content").value;
@@ -136,7 +144,7 @@
         var date = document.getElementById("date").value;
         var id = document.getElementById("id").value;
 
-        fetch("/api/found/"+id, {
+        fetch("/api/found/" + id, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json"
@@ -152,8 +160,8 @@
                 date: date
             })
         })
-        .then(function(){
-            location.href="/found";
+        .then(function () {
+            location.href = "/found";
         });
     }
 </script>
