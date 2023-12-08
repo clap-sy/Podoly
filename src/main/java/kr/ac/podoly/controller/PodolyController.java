@@ -37,16 +37,6 @@ public class PodolyController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedArticle);
     }
-//    @GetMapping("/api/main/articles")
-//    public ResponseEntity<List<Article>> findAllArticle(){
-//        List<Article> articles=podolyService.findAll();
-//        return ResponseEntity.ok().body(articles);
-//    }
-//    @GetMapping("/api/main/articles/{id}")
-//    public ResponseEntity<Article> findArticle(@PathVariable long id){
-//        Article article=podolyService.findOne(id);
-//        return ResponseEntity.ok().body(article);
-//    }
     @GetMapping("/api/found")
     public ResponseEntity<List<Article>> findAllLostItems(){
         List<Article> articles = podolyService.findAllFound();

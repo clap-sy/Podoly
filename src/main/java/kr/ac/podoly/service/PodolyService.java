@@ -17,8 +17,7 @@ public class PodolyService {
     public PodolyService(PodolyRepository podolyRepository) {
         this.podolyRepository = podolyRepository;
     }
-//    @Autowired
-//    private PodolyRepository podolyRepository;
+
     public Article save(AddArticleRequest request) {
         return podolyRepository.save(request.toEntity());
     }

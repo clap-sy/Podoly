@@ -95,11 +95,11 @@
 <div class="container">
     <input id="title" type="text" th:value="${article.title}" class="form-control">
     <input id="itemName" type="text" th:value="${article.itemName}" class="form-control">
-    <input id="content" class="form-control" th:text="${article.content}"></intput>
+    <input id="content" class="form-control" th:text="${article.content}">
     <input id="description" type="text" th:value="${article.description}" class="form-control">
-<!--    <input id="lat" type="text" th:value="${article.lat}" class="form-control">-->
-<!--    <input id="lng" type="text" th:value="${article.lng}" class="form-control">-->
-    <input id="address" type="text" th:value="${article.address}" class="form-control">
+    <input id="lat" type="text" th:value="${article.lat}" class="form-control">
+    <input id="lng" type="text" th:value="${article.lng}" class="form-control">
+    <input id="address" type="hidden">
     <input id="date" type="date" th:value="${article.date}" class="form-control">
     <input id="id" type="hidden" th:value="${article.id}">
     <div class="text-center">
@@ -107,16 +107,35 @@
     </div>
 </div>
 <script>
+    var lat = document.getElementById("lat").value;
+    var lng = document.getElementById("lng").value;
+
+    fetch("https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x="+lng+"&y="+lat,{
+        headers:{
+            Authorization:"KakaoAK c3bd320c26840fdf683a85f5ea5bf3fc"
+        }
+    })
+    .then(response=>response.json())
+    .then(result=>{
+        if (result.documents && result.documents.length > 0) {
+            var address = result.documents[0].address_name;
+            document.getElementById('address').value = address;
+        } else {
+            console.error('Invalid response', result);
+        }
+    });
+
     function modify(){
         var title = document.getElementById("title").value;
         var itemName = document.getElementById("itemName").value;
         var content = document.getElementById("content").value;
         var description = document.getElementById("description").value;
-<!--        var lat = document.getElementById("lat").value;-->
-<!--        var lng = document.getElementById("lng").value;-->
+        var lat = document.getElementById("lat").value;
+        var lng = document.getElementById("lng").value;
         var address = document.getElementById("address").value;
         var date = document.getElementById("date").value;
         var id = document.getElementById("id").value;
+
         fetch("/api/found/"+id, {
             method: "PUT",
             headers: {
@@ -129,13 +148,13 @@
                 description: description,
                 lat: lat,
                 lng: lng,
-                address: address
+                address: address,
                 date: date
             })
         })
         .then(function(){
             location.href="/found";
-        })
+        });
     }
 </script>
 </body>
