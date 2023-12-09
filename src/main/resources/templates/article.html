@@ -9,6 +9,23 @@
             padding: 20px;
             background-image: linear-gradient(to right, #f8f9fa, #e9ecef);
             font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 60px;
+        }
+        h3{
+            margin-right: 350px;
+            color: #004d40;
+        }
+        .header1{
+            padding-left:130px;
+            padding-right:30px;
+        }
+        .header2 {
+            background-color: #659f7c;
+            padding:5px;
+            padding-left: 20px;
         }
         .container {
             max-width: 800px;
@@ -41,9 +58,67 @@
         .btn-primary:hover {
             background-color: #388E3C; /* 마우스를 올렸을 때의 색상을 조정 */
         }
+        nav {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          align-items: flex-end; /* 아래선에 맞춤 */
+        }
+
+        nav li {
+          margin-right: 20px;
+        }
+
+        nav a {
+          color: #006400;
+          text-decoration: none;
+          font-size: 18px;
+        }
+        img {
+            width: 80px;
+            height: auto;
+        }
+        .footer {
+            position: relative;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #006400;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: white;
+            color: #ffcc00;
+        }
+        .footer p {
+            color: white;
+            margin-bottom: 0;
+        }
     </style>
 </head>
-<body>
+
+<body class="bg-light">
+<div class="header-container1">
+    <div class="header1">
+        <nav>
+            <img src="/podoly.png">
+            <h3><strong>포돌이 유실물 포털</strong></h3>
+            <li><strong><a href="/main/articles">Home</a></strong></li>
+            <li><strong><a href="/found">분실물 확인</a></strong></li>
+            <li><strong><a href="/get">습득물 확인</a></strong></li>
+            <li><strong><a href="/new-article">분실물 신고</a></strong></li>
+            <li><strong><a href="/check">습득물 신고</a></strong></li>
+        </nav>
+    </div>
+</div>
+<div class="header2"></div>
+<br><br>
 <div class="container">
     <article>
         <header>
@@ -79,6 +154,12 @@
             });
         }
     </script>
+</div>
+<br><br>
+<div class="footer">
+    <p>포돌이 분실함 &copy; 2023</p><br>
+    <p>사이트 이용안내 | <a href="#">개인정보처리방침</a></p>
+    <p>56472 서울특별시 서대문구 포돌로 55 | 민원전화 : 국번없이 572</p>
 </div>
 </body>
 </html>
