@@ -6,6 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <style>
+        .title a{
+            font-size: 0.8em; /* 원하는 크기로 조절하세요. */
+        }
         body {
             font-family: 'Noto Sans KR', sans-serif;
             margin: 0;
@@ -26,7 +29,7 @@
         }
 
         h3{
-            margin-right: 350px;
+            margin-right: 570px;
             color: #004d40;
             }
 
@@ -89,7 +92,7 @@
     <div class="header1">
         <nav>
             <img src="/podoly.png">
-            <h3><strong>포돌이 유실물 포털</strong></h3>
+            <h3><strong class="title"><a href="/main/articles">포돌이 유실물 포털</a></strong></h3>
             <li><strong><a href="/main/articles">Home</a></strong></li>
             <li><strong><a href="/found">분실물 확인</a></strong></li>
             <li><strong><a href="/get">습득물 확인</a></strong></li>
@@ -109,10 +112,10 @@
     <div class="card mb-3">
         <div class="card-body">
             <input id="item-name" type="text" class="form-control mb-3" placeholder="분실물명">
-            <p>분실 장소는 지도에서 찾아보세요 ~!</p>
+            <p>분실 장소는 지도에서 찾아보세요 ~!</p><p><em>지도를 클릭해주세요!</em></p>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8479eb343c222ca3962fa3db4ab463f1"></script>
             <div id="map" style="width:100%;height:750px;"></div>
-            <p><em>지도를 클릭해주세요!</em></p>
+
             <div id="clickLatlng"></div>
             <script src="/articleMain.js"></script>
             <input id="address" type="hidden">
