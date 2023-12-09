@@ -99,7 +99,7 @@
     </div>
 </div>
 <div class="header2"></div>
-<br/>
+<br>
 <div class="container">
     <div class="text-center">
         <h1 class="display-4"><strong>분실물 신고하기 ♥</strong></h1>
@@ -122,7 +122,7 @@
         </div>
     </div>
 </div>
-
+<br>
 <script>
     var submitBtn = document.getElementById("submit");
     submitBtn.addEventListener("click", event => {
@@ -130,8 +130,8 @@
         var itemName = document.getElementById("item-name").value; // 먼저 itemName 선언
         var title = itemName; // 그 다음 title에 itemName 할당
         var itemName = document.getElementById("item-name").value;
-<!--        var lat = marker.getPosition().getLat(); // 위도 정보-->
-<!--        var lng = marker.getPosition().getLng(); // 경도 정보-->
+        var lat = marker.getPosition().getLat(); // 위도 정보
+        var lng = marker.getPosition().getLng(); // 경도 정보
         var address = document.getElementById("address").value;
         var description = document.getElementById("description").value;
         var date = document.getElementById("date").value;
@@ -155,8 +155,8 @@
             body: JSON.stringify({
                 title: title,
                 itemName: itemName,
-<!--                lat: lat,-->
-<!--                lng: lng,-->
+                lat: lat,
+                lng: lng,
                 address: address,
                 description: description,
                 date: date,
