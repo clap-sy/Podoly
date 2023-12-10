@@ -43,5 +43,6 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     .then(response=>response.json())
     .then(result=>{
          console.log(result)
+         document.getElementById("address").value=result.documents[0].address_name
     })
 });
