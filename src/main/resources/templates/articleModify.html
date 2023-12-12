@@ -119,9 +119,11 @@
             <img src="/podoly.png" alt="로고">
             <h3><strong class="title"><a href="/main/articles">포돌이 유실물 포털</a></strong></h3>
             <li><strong><a href="#">Home</a></strong></li>
-            <li><strong><a href="#">분실물 확인</a></strong></li>
             <li><strong><a href="#">분실물 신고</a></strong></li>
             <li><strong><a href="#">습득물 신고</a></strong></li>
+            <li><strong><a href="#">분실물 확인</a></strong></li>
+            <li><strong><a href="#">습득물 확인</a></strong></li>
+
         </nav>
     </div>
 </div>
@@ -130,12 +132,16 @@
 <br>
 <body>
 <div class="container">
-    <div class="form-group">
-        <label for="title">제목</label>
+    <div class="form-group" style="display: none;">
+        <label for="title">타이틀</label>
         <input id="title" type="text" th:value="${article.title}" class="form-control">
     </div>
+    <div class="form-group" style="display: none;">
+        <label for="itemName">이름</label>
+        <input id="itemName" type="text" th:value="${article.itemName}" class="form-control">
+    </div>
     <div class="form-group">
-        <label for="description">설명</label>
+        <label for="description">상세정보</label>
         <input id="description" type="text" th:value="${article.description}" class="form-control">
     </div>
     <div class="form-group">
@@ -153,6 +159,10 @@
     <div class="form-group">
         <label for="date">날짜</label>
         <input id="date" type="date" th:value="${article.date}" class="form-control">
+    </div>
+    <div class="form-group" style="display: none;">
+        <label for="content">내용</label>
+        <input id="content" type="text" th:value="${article.content}" class="form-control">
     </div>
     <input id="id" type="hidden" th:value="${article.id}">
     <div class="text-center">

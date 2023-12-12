@@ -6,77 +6,98 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         .title a{
-            font-size: 0.8em; /* 원하는 크기로 조절하세요. */
-        }
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            margin-bottom: 60px;
-        }
-        .header1{
-            padding-left:130px;
-            padding-right:30px;
-        }
-        .header2 {
-            background-color: #659f7c;
-            padding:5px;
-            padding-left: 20px;
-        }
-        h3{
-            margin-right: 570px;
-            color: #004d40;
-        }
-        nav {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            align-items: flex-end; /* 아래선에 맞춤 */
-        }
-        nav li {
-            margin-right: 20px;
-        }
-        nav a {
-            color: #006400;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        img {
-            width: 80px;
-            height: auto;
-        }
-        .card-header {
-            background-color: #8BC34A;
-            color: white;
-        }
-        .btn-success {
-            background-color: #4CAF50;
-            color: white;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        .footer {
-            position: relative;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #006400;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            color: #ffcc00;
-        }
-        .footer p {
-            margin-bottom: 0;
-        }
+    font-size: 0.8em; /* 원하는 크기로 조절하세요. */
+}
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 60px;
+}
+
+.header1{
+    padding-left:130px;
+    padding-right:30px;
+    }
+
+.header2 {
+  background-color: #659f7c;
+  padding:5px;
+  padding-left: 20px;
+}
+
+h3{
+    margin-right: 570px;
+    color: #004d40;
+    }
+
+nav {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: flex-end; /* 아래선에 맞춤 */
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  color: #006400;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+img {
+width: 80px;
+height: auto;
+    }
+.card-header {
+    background-color: #8BC34A;
+    color: white;
+}
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+}
+h1 {
+    color: #4CAF50;
+}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #006400;
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #ffcc00;
+}
+.footer p {
+    margin-bottom: 0;
+}
+strong {
+font-weight: bold;
+}
+
+.highlight {
+color: #FFA500;  /* 빨간색으로 변경, 원하는 색상으로 수정 가능 */
+animation: blink 1s linear infinite; /* 깜빡임 효과 */
+}
+
+@keyframes blink {
+0% { opacity: 1; }
+50% { opacity: 0; }
+100% { opacity: 1; }
+}
     </style>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8479eb343c222ca3962fa3db4ab463f1"></script>
 </head>
@@ -87,10 +108,11 @@
             <img src="/podoly.png">
             <h3><strong class="title"><a href="/main/articles">포돌이 유실물 포털</a></strong></h3>
             <li><strong><a href="/main/articles">Home</a></strong></li>
-            <li><strong><a href="/found">분실물 확인</a></strong></li>
-            <li><strong><a href="/get">습득물 확인</a></strong></li>
             <li><strong><a href="/new-article">분실물 신고</a></strong></li>
             <li><strong><a href="/check">습득물 신고</a></strong></li>
+            <li><strong><a href="/found">분실물 확인</a></strong></li>
+            <li><strong><a href="/get">습득물 확인</a></strong></li>
+
         </nav>
     </div>
 </div>
@@ -104,13 +126,14 @@
     </div>
     <div class="card mb-3">
         <div class="card-body">
-            <input id="item-name" type="text" class="form-control mb-3" placeholder="습득물명">
-            <p>습득 장소는 지도에서 찾아보세요 ~!</p><p><em>지도를 클릭해주세요!</em></p>
+            <input id="item-name" type="text" class="form-control mb-3" placeholder="분실물명">
+            <p><strong>분실 장소</strong>는 <strong>지도</strong>에서 찾아보세요 ~!</p>
+            <p><em><strong>지도</strong>를 <span class="highlight"><strong>클릭</strong></span>해주세요!</em></p>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8479eb343c222ca3962fa3db4ab463f1"></script>
             <div id="map" style="width:100%;height:750px;"></div>
             <div id="clickLatlng"></div>
             <script src="/articleMain.js"></script>
-            <input id="address" type="hidden">
+            <input id="address" type="hidden"><br>
             <textarea id="description" class="form-control mb-3" placeholder="상세정보" cols="30" rows="10"></textarea>
             <input id="date" type="date" class="form-control mb-3">
             <button id="submit" class="btn btn-success mt-3">신고하기</button>
