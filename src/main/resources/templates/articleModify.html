@@ -209,6 +209,26 @@
         var date = document.getElementById("date").value;
         var id = document.getElementById("id").value;
 
+        fetch("/api/get/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                itemName: itemName,
+                content: content,
+                description: description,
+                lat: lat,
+                lng: lng,
+                address: address,
+                date: date
+            })
+        })
+        .then(function () {
+            location.href = "/get";
+        });
+
         fetch("/api/found/" + id, {
             method: "PUT",
             headers: {
